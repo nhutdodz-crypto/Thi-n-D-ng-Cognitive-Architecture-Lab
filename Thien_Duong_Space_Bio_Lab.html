@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Bio-Convergence Lab | TDFE Space-Bio System</title>
+    <!-- Thư viện CDN chuẩn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-blue: #0B3D91; /* NASA Blue */
+            --esa-cyan: #00F5FF;
+            --bio-green: #50C878;
+            --gold: #D4AF37;
+            --void: #05070A;
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--void); 
+            color: #E2E8F0;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'IBM Plex Mono', monospace; }
+        .playfair { font-family: 'Playfair Display', serif; }
+        
+        /* Hiệu ứng kính và không gian */
+        .glass { 
+            background: rgba(15, 23, 42, 0.8); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        .iridescent {
+            background: linear-gradient(135deg, #0B3D91, #50C878, #00F5FF, #A888F0);
+            background-size: 300% 300%;
+            animation: shift 10s ease infinite;
+        }
+        @keyframes shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .tier-badge {
+            font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+            text-transform: uppercase; border: 1px solid currentColor;
+        }
+        .tier-3 { color: var(--bio-green); background: rgba(80, 200, 120, 0.1); }
+        .tier-5 { color: var(--esa-cyan); background: rgba(0, 245, 255, 0.1); }
+
+        /* Animation cho Pipeline */
+        @keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+        .scanning::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 245, 255, 0.2), transparent);
+            animation: scan 2s linear infinite;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- HEADER: SPACE FORCE SAFE API -->
+    <header class="sticky top-0 z-50 glass px-4 py-3 flex items-center justify-between shadow-2xl">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center p-1 shadow-inner">
+                <img src="https://i.imgur.com/rN5MSuB.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="font-bold text-sm tracking-tight text-white uppercase">TD-CAL Lab</h1>
+                <div class="flex items-center gap-2">
+                    <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-[9px] mono text-cyan-400 font-bold uppercase tracking-widest">USSF Safe API :: Verified</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <div class="bg-slate-900 px-3 py-1.5 rounded-full border border-slate-700 flex items-center gap-2">
+                <i data-lucide="coins" class="w-4 h-4 text-amber-500"></i>
+                <span id="credits" class="text-xs font-bold text-amber-100">1,250</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">NH</div>
+        </div>
+    </header>
+
+    <!-- SEARCH & FILTERS -->
+    <div class="px-6 py-4">
+        <div class="relative mb-4">
+            <i data-lucide="search" class="absolute left-4 top-3 text-slate-500 w-4 h-4"></i>
+            <input type="text" placeholder="Tìm kiếm Bio-Space Modules (NASA, ESA...)" 
+                   class="w-full bg-slate-900 border border-slate-800 rounded-2xl py-2.5 pl-11 pr-4 text-xs outline-none focus:ring-2 ring-cyan-500/20 text-white">
+        </div>
+        <div class="flex gap-4 overflow-x-auto no-scrollbar text-[10px] font-bold text-slate-500">
+            <span class="text-cyan-400 border-b-2 border-cyan-400 pb-1">TẤT CẢ</span>
+            <span>BỨC XẠ VŨ TRỤ</span>
+            <span>Y HỌC KHÔNG GIAN</span>
+            <span>NASA ISS</span>
+            <span>JWST DATA</span>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <main class="px-6 space-y-8">
+        
+        <!-- HERO BANNER: INTEGRATED SPACE BIO -->
+        <section class="relative h-56 rounded-[32px] overflow-hidden p-8 iridescent text-white shadow-2xl">
+            <div class="relative z-10">
+                <div class="bg-black/20 backdrop-blur-md px-3 py-1 rounded-full w-fit mb-4">
+                    <span class="mono text-[9px] font-bold tracking-widest uppercase">TDFE v3.0 Global System</span>
+                </div>
+                <h2 class="playfair italic text-3xl font-bold mb-1">Integrated Bio-Convergence</h2>
+                <p class="text-xs opacity-90 max-w-[220px] leading-relaxed mb-6">Kết nối dữ liệu thực thi từ NASA, ESA, CNSA & JWST.</p>
+                <button onclick="openDetails(1)" class="bg-white text-blue-900 px-6 py-2.5 rounded-xl font-bold text-xs shadow-xl active:scale-95 transition-transform">
+                    Deploy Bio-Shield
+                </button>
+            </div>
+            <img src="https://i.imgur.com/rN5MSuB.png" class="absolute right-[-20px] bottom-[-20px] w-64 h-64 opacity-20 rotate-12" alt="bg">
+        </section>
+
+        <!-- MODULE GRID -->
+        <section>
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Space-Bio Artifacts</h3>
+                    <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold mt-1">Verified by Eternal Olive Standard</p>
+                </div>
+                <i data-lucide="chevron-right" class="text-slate-600"></i>
+            </div>
+            <div class="grid grid-cols-2 gap-6" id="module-grid">
+                <!-- Modules generated by JS -->
+            </div>
+        </section>
+
+        <!-- LIVE SPACE FEEDS -->
+        <section class="glass rounded-[32px] p-6 space-y-4">
+            <h3 class="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase">Live Space-Bio Feeds</h3>
+            <div class="space-y-4" id="live-feeds">
+                <!-- Feeds generated by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- MODULE DETAIL OVERLAY -->
+    <div id="detail-overlay" class="fixed inset-0 z-[100] bg-[#05070A] hidden overflow-y-auto">
+        <div class="p-6">
+            <button onclick="closeDetails()" class="mb-8 w-12 h-12 glass rounded-full flex items-center justify-center text-white">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            
+            <div class="flex gap-6 mb-10">
+                <div class="w-24 h-24 glass rounded-[32px] flex items-center justify-center p-6 shadow-2xl">
+                    <img id="det-img" src="" class="w-full h-full object-contain">
+                </div>
+                <div class="flex-1">
+                    <h2 id="det-title" class="text-3xl font-bold text-white mb-1 leading-tight">Module Name</h2>
+                    <p id="det-source" class="text-cyan-400 font-bold text-xs uppercase tracking-widest">Source Agency</p>
+                    <div id="det-tier" class="tier-badge w-fit mt-3">Tier 5</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-10 text-center glass border-none rounded-3xl py-6">
+                <div><p class="text-lg font-bold text-white" id="det-fid">98%</p><p class="text-[9px] text-slate-500 uppercase font-bold">Fidelity</p></div>
+                <div><p class="text-lg font-bold text-white" id="det-proc">12ms</p><p class="text-[9px] text-slate-500 uppercase font-bold">Latency</p></div>
+                <div><p class="text-lg font-bold text-white" id="det-credit">+50</p><p class="text-[9px] text-slate-500 uppercase font-bold">Reward</p></div>
+            </div>
+
+            <p id="det-desc" class="text-slate-400 text-sm leading-relaxed mb-10 italic">Module description goes here.</p>
+
+            <button id="deploy-btn" onclick="startDeployment()" class="w-full iridescent text-white font-bold py-5 rounded-2xl shadow-2xl active:scale-95 transition-transform flex items-center justify-center gap-3">
+                <i data-lucide="zap" class="w-5 h-5 fill-current"></i> DEPLOY TO MISSION
+            </button>
+
+            <!-- DEPLOYMENT VISUALIZER -->
+            <div id="visualizer" class="hidden glass rounded-[40px] p-8 mt-8 relative overflow-hidden">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="mono text-[10px] text-cyan-400 tracking-[0.3em] uppercase">TDFE Pipeline Execution</span>
+                    <span id="deploy-status" class="text-[8px] bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full font-bold animate-pulse">CONNECTING...</span>
+                </div>
+                <div class="space-y-6" id="pipeline-steps">
+                    <!-- Steps L1-L5 generated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB BAR -->
+    <nav class="fixed bottom-0 inset-x-0 h-20 glass border-t border-white/5 flex justify-around items-center px-6 z-50">
+        <div class="flex flex-col items-center gap-1 text-cyan-400">
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            <span class="text-[9px] font-bold">Artifacts</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-slate-500">
+            <i data-lucide="satellite" class="w-5 h-5"></i>
+            <span class="text-[9px] font-bold">SDA</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-slate-500">
+            <div class="w-12 h-12 rounded-2xl iridescent flex items-center justify-center -mt-10 shadow-2xl border-4 border-[#05070A]">
+                <i data-lucide="zap" class="text-white w-6 h-6"></i>
+            </div>
+            <span class="text-[9px] font-bold">Mission</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-slate-500">
+            <i data-lucide="microscope" class="w-5 h-5"></i>
+            <span class="text-[9px] font-bold">Lab</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-slate-500">
+            <i data-lucide="globe" class="w-5 h-5"></i>
+            <span class="text-[9px] font-bold">Global</span>
+        </div>
+    </nav>
+
+    <script>
+        // DATA TÍCH HỢP 7 CƠ QUAN VŨ TRỤ
+        const MODULES = [
+            { id: 1, name: "AstroShield AI", source: "NASA ISS Lab", tier: "tier-5", fid: "99.2%", credit: "+85", icon: "https://i.imgur.com/rN5MSuB.png", desc: "Ứng dụng Polyphenol nồng độ cao bảo vệ DNA phi hành gia trước tia bức xạ GCR theo dữ liệu NASA 2024." },
+            { id: 2, name: "ESA Selection Monitor", source: "ESA Careers", tier: "tier-3", fid: "97.5%", credit: "+40", icon: "https://i.imgur.com/rN5MSuB.png", desc: "Đánh giá Fidelity thể chất và nhận thức theo quy trình Astronaut Selection 2022-2024 của ESA." },
+            { id: 3, name: "SDA Organic Guard", source: "US Space Force", tier: "tier-5", fid: "98.9%", credit: "+120", icon: "https://i.imgur.com/rN5MSuB.png", desc: "Theo dõi độ bền vật liệu sinh học hữu cơ trong môi trường SDA (Space Domain Awareness)." },
+            { id: 4, name: "JWST Bio-Analyzer", source: "ESO / JWST", tier: "tier-3", fid: "96.4%", credit: "+60", icon: "https://i.imgur.com/rN5MSuB.png", desc: "Phân tích dấu hiệu sinh học (Bio-signatures) trên ngoại hành tinh dựa trên phổ học từ Chile và JWST." },
+            { id: 5, name: "Chang'e Bio-Matrix", source: "CNSA (China)", tier: "tier-5", fid: "95.0%", credit: "+90", icon: "https://i.imgur.com/rN5MSuB.png", desc: "Mô phỏng sự phát triển của mầm non olive trong môi trường trọng lực thấp của Mặt Trăng." },
+            { id: 6, name: "Roscosmos LifeSupport", source: "Roscosmos (Russia)", tier: "tier-3", fid: "94.2%", credit: "+55", icon: "https://i.imgur.com/rN5MSuB.png", desc: "Hệ thống hỗ trợ sự sống đóng kín dựa trên quang hợp thực vật Địa Trung Hải." }
+        ];
+
+        // Khởi tạo icons
+        lucide.createIcons();
+
+        // Render Grid
+        const grid = document.getElementById('module-grid');
+        MODULES.forEach(mod => {
+            grid.innerHTML += `
+                <div class="glass rounded-[32px] p-5 cursor-pointer hover:scale-105 transition-transform" onclick="openDetails(${mod.id})">
+                    <div class="w-14 h-14 bg-slate-900 rounded-2xl mb-4 p-2 shadow-inner border border-white/5">
+                        <img src="${mod.icon}" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-xs mb-1 text-white truncate">${mod.name}</h4>
+                    <p class="text-[8px] text-slate-500 font-bold mb-3 uppercase tracking-tighter">${mod.source}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="tier-badge ${mod.tier}">${mod.tier}</span>
+                        <span class="text-[9px] text-cyan-400 font-bold">${mod.fid}</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Render Live Feeds
+        const feeds = document.getElementById('live-feeds');
+        [1, 2, 4].forEach(id => {
+            const mod = MODULES.find(m => m.id === id);
+            feeds.innerHTML += `
+                <div class="flex items-center gap-4 group cursor-pointer" onclick="openDetails(${id})">
+                    <div class="w-10 h-10 rounded-xl glass border-slate-700 p-2 group-hover:border-cyan-500 transition-colors">
+                        <img src="${mod.icon}" class="w-full h-full object-contain opacity-70">
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-[10px] font-bold text-slate-200">${mod.name} Data Stream</h5>
+                        <p class="text-[8px] text-slate-500 uppercase font-bold">${mod.source} • Live API</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[9px] font-bold text-cyan-400">8ms Latency</p>
+                        <div class="h-1 w-8 bg-slate-800 rounded-full mt-1 overflow-hidden">
+                            <div class="h-full bg-cyan-400 w-2/3"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        let activeMod = null;
+
+        function openDetails(id) {
+            activeMod = MODULES.find(m => m.id === id);
+            document.getElementById('det-title').innerText = activeMod.name;
+            document.getElementById('det-source').innerText = activeMod.source;
+            document.getElementById('det-img').src = activeMod.icon;
+            document.getElementById('det-fid').innerText = activeMod.fid;
+            document.getElementById('det-credit').innerText = activeMod.credit;
+            document.getElementById('det-desc').innerText = activeMod.desc;
+            
+            const badge = document.getElementById('det-tier');
+            badge.innerText = activeMod.tier.toUpperCase();
+            badge.className = `tier-badge ${activeMod.tier} w-fit mt-3`;
+
+            // Reset UI
+            document.getElementById('deploy-btn').classList.remove('hidden');
+            document.getElementById('visualizer').classList.add('hidden');
+            document.getElementById('detail-overlay').classList.remove('hidden');
+            
+            lucide.createIcons();
+        }
+
+        function closeDetails() {
+            document.getElementById('detail-overlay').classList.add('hidden');
+        }
+
+        async function startDeployment() {
+            const btn = document.getElementById('deploy-btn');
+            const visualizer = document.getElementById('visualizer');
+            const status = document.getElementById('deploy-status');
+            const pipeline = document.getElementById('pipeline-steps');
+
+            btn.classList.add('hidden');
+            visualizer.classList.remove('hidden');
+            visualizer.classList.add('scanning');
+
+            const layers = ["Ingestion (Space API)", "Structuring (Bio-Metrics)", "Fidelity Optimization", "Execution Map", "Mission Feedback"];
+            pipeline.innerHTML = "";
+            
+            for(let i=0; i<5; i++) {
+                pipeline.innerHTML += `
+                    <div class="step flex items-center gap-4 opacity-100" id="L${i+1}">
+                        <div class="w-6 h-6 rounded-full border border-cyan-500 flex items-center justify-center mono text-[10px] text-cyan-400">${i+1}</div>
+                        <div class="flex-1">
+                            <p class="text-[9px] font-bold uppercase tracking-widest text-white">${layers[i]}</p>
+                            <div class="h-[1px] bg-slate-800 w-full mt-1.5 overflow-hidden">
+                                <div id="bar-L${i+1}" class="h-full bg-cyan-400 w-0 transition-all duration-700"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                status.innerText = `L${i+1} PROCESSING...`;
+                await new Promise(r => setTimeout(r, 100));
+                document.getElementById(`bar-L${i+1}`).style.width = "100%";
+                await new Promise(r => setTimeout(r, 1000));
+            }
+
+            status.innerText = "MISSION DEPLOYED";
+            status.className = "text-[8px] bg-green-500/20 text-green-400 px-3 py-1 rounded-full font-bold";
+            visualizer.classList.remove('scanning');
+            
+            // Cập nhật Credit giả lập
+            const creditVal = document.getElementById('credits');
+            const current = parseInt(creditVal.innerText.replace(',', ''));
+            const added = parseInt(activeMod.credit.replace('+', ''));
+            creditVal.innerText = (current + added).toLocaleString();
+            
+            alert(`Module ${activeMod.name} đã được xác thực qua TDFE v3.0.\nĐã kết nối thành công với vệ tinh ${activeMod.source}.`);
+        }
+    </script>
+</body>
+</html>
