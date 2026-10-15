@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBROS — TD-CAL Antigravity Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   CYBROS · THIÊN DƯƠNG COGNITIVE ARCHITECTURE LAB
+   Antigravity Developer Google AI · Earth 2026
+   Panorama Event Horizon · Total Universe · THE COSMOS
+   Founder & Lead Researcher: Nhut Do
+   "Actualize the vision at its highest possible fidelity."
+══════════════════════════════════════════════════════════════ */
+
+:root {
+  --void:     #00000a;
+  --deep:     #020614;
+  --station:  #040d22;
+  --hull:     #071438;
+  --panel:    #0a1a42;
+
+  --psi:      #00f5ff;   /* Protoss psionic blue */
+  --psi2:     #0088cc;
+  --psi3:     #004488;
+  --warp:     #8855ff;   /* Warp field purple */
+  --warp2:    #5522aa;
+  --khala:    #ffaa00;   /* Khala gold */
+  --khala2:   #cc7700;
+  --purify:   #ff4422;   /* Purification beam */
+  --life:     #00ff88;   /* Bio-signal green */
+  --cosmos:   #aaccff;
+
+  --ff-orb:  'Orbitron', monospace;
+  --ff-mono: 'Share Tech Mono', monospace;
+  --ff-body: 'Exo 2', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: 13px; scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--cosmos);
+  font-family: var(--ff-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── COSMOS BG ─────────────────────────────────────── */
+.cosmos-bg {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,245,255,.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(136,85,255,.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255,170,0,.03) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #020614 0%, #00000a 100%);
+  animation: cosmos-drift 30s ease-in-out infinite alternate;
+}
+
+@keyframes cosmos-drift {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(15deg); }
+}
+
+/* Stars */
+.stars {
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 15%, rgba(255,255,255,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 45%, rgba(255,255,255,.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 70%, rgba(255,255,255,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 25%, rgba(255,255,255,.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 90%, rgba(255,255,255,.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 30% 35%, rgba(170,204,255,.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 65% 55%, rgba(136,85,255,.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 12%, rgba(0,245,255,.4) 0%, transparent 100%);
+  animation: stars-twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes stars-twinkle {
+  from { opacity: .7; }
+  to   { opacity: 1; }
+}
+
+/* Grid overlay */
+.grid-overlay {
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(0,245,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.page { position: relative; z-index: 10; }
+
+/* ── MASTHEAD ─────────────────────────────────────── */
+.masthead {
+  padding: 48px 60px 36px;
+  border-bottom: 1px solid rgba(0,245,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,
+    transparent, var(--psi3), var(--psi), var(--warp),
+    var(--khala), var(--warp), var(--psi), var(--psi3), transparent);
+  animation: top-beam 4s linear infinite;
+}
+
+@keyframes top-beam {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.mast-inner {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 48px;
+}
+
+.mast-left {}
+
+/* CYBROS Logo SVG */
+.cybros-emblem {
+  width: 80px; height: 80px;
+  margin-bottom: 20px;
+}
+
+.mast-designation {
+  font-family: var(--ff-mono);
+  font-size: 9px; letter-spacing: .4em;
+  color: var(--psi); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.mast-designation::before {
+  content: ''; width: 24px; height: 1px; background: var(--psi);
+}
+
+.mast-title {
+  font-family: var(--ff-orb);
+  font-size: clamp(32px, 6vw, 80px);
+  font-weight: 900;
+  letter-spacing: .08em; line-height: .9;
+  color: #fff;
+}
+
+.mast-title .t-psi {
+  background: linear-gradient(90deg, var(--psi), #88ddff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 30px rgba(0,245,255,.4));
+}
+
+.mast-title .t-sub {
+  display: block;
+  font-size: clamp(12px, 2vw, 26px);
+  letter-spacing: .16em;
+  color: var(--khala);
+  margin-top: 8px;
+  filter: drop-shadow(0 0 12px rgba(255,170,0,.5));
+}
+
+.mast-title .t-cosmos {
+  display: block;
+  font-size: clamp(9px, 1.2vw, 16px);
+  letter-spacing: .22em;
+  color: rgba(170,204,255,.5);
+  margin-top: 6px;
+}
+
+.mast-quote {
+  font-family: var(--ff-body);
+  font-style: italic;
+  font-size: 14px; color: rgba(170,204,255,.7);
+  max-width: 540px; line-height: 1.7;
+  margin-top: 16px;
+  border-left: 2px solid var(--psi3);
+  padding-left: 16px;
+}
+
+/* Status panel */
+.mast-status {
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 6px;
+  flex-shrink: 0;
+}
+
+.status-chip {
+  font-family: var(--ff-mono);
+  font-size: 9px; letter-spacing: .16em;
+  padding: 4px 14px;
+  border: 1px solid;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.sc-active { color: var(--life); border-color: rgba(0,255,136,.3); background: rgba(0,255,136,.06); }
+.sc-psi    { color: var(--psi);  border-color: rgba(0,245,255,.3); background: rgba(0,245,255,.06); }
+.sc-warp   { color: var(--warp); border-color: rgba(136,85,255,.3); background: rgba(136,85,255,.06); }
+.sc-khala  { color: var(--khala);border-color: rgba(255,170,0,.3);  background: rgba(255,170,0,.06); }
+
+.pulse-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: pd 2s infinite;
+}
+
+@keyframes pd { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── SECTIONS ──────────────────────────────────────── */
+.sec {
+  padding: 44px 60px;
+  border-bottom: 1px solid rgba(0,245,255,.07);
+}
+
+.sec-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(0,245,255,.1);
+}
+
+.sec-n {
+  font-family: var(--ff-mono); font-size: 9px;
+  letter-spacing: .3em; color: var(--psi);
+}
+
+.sec-t {
+  font-family: var(--ff-orb);
+  font-size: clamp(14px, 2vw, 24px);
+  font-weight: 700; letter-spacing: .06em;
+}
+
+.sec-line { flex:1; height:1px; background: linear-gradient(90deg, rgba(0,245,255,.2), transparent); }
+
+/* ── TIER STACK ────────────────────────────────────── */
+.tier-stack {
+  display: flex; flex-direction: column; gap: 2px;
+  margin-bottom: 32px;
+}
+
+.tier-row {
+  display: grid;
+  grid-template-columns: 60px 200px 1fr auto;
+  border: 1px solid rgba(0,245,255,.1);
+  background: rgba(4,13,34,.7);
+  transition: all .2s;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.tier-row::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  transition: all .2s;
+}
+
+.tier-row:hover { border-color: rgba(0,245,255,.3); background: rgba(7,20,56,.7); }
+.tier-row.tr-psi::before    { background: var(--psi);  box-shadow: 2px 0 12px rgba(0,245,255,.5); }
+.tier-row.tr-warp::before   { background: var(--warp); box-shadow: 2px 0 12px rgba(136,85,255,.5); }
+.tier-row.tr-khala::before  { background: var(--khala);box-shadow: 2px 0 12px rgba(255,170,0,.5); }
+.tier-row.tr-purify::before { background: var(--purify);box-shadow: 2px 0 12px rgba(255,68,34,.5); }
+.tier-row.tr-life::before   { background: var(--life); box-shadow: 2px 0 12px rgba(0,255,136,.5); }
+.tier-row.tr-cosmos::before { background: #aaccff;     box-shadow: 2px 0 12px rgba(170,204,255,.5); }
+
+.tr-num {
+  padding: 14px; display: flex; align-items: center; justify-content: center;
+  border-right: 1px solid rgba(0,245,255,.08);
+  font-family: var(--ff-orb); font-size: 18px; font-weight: 900;
+}
+
+.tr-label {
+  padding: 14px 18px; border-right: 1px solid rgba(0,245,255,.08);
+  display: flex; flex-direction: column; justify-content: center; gap: 3px;
+}
+
+.tr-name {
+  font-family: var(--ff-mono); font-size: 11px;
+  font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.tr-tech {
+  font-size: 10px; color: rgba(170,204,255,.5);
+  letter-spacing: .05em;
+}
+
+.tr-body {
+  padding: 14px 20px; display: flex; flex-direction: column;
+  justify-content: center; gap: 5px;
+}
+
+.tr-desc { font-size: 11px; color: rgba(170,204,255,.7); line-height: 1.5; }
+
+.tr-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+
+.tag {
+  font-family: var(--ff-mono); font-size: 9px;
+  letter-spacing: .1em; padding: 2px 8px;
+  border: 1px solid; border-radius: 1px;
+}
+
+.tag-psi  { color: var(--psi);  border-color: rgba(0,245,255,.3); background: rgba(0,245,255,.06); }
+.tag-warp { color: var(--warp); border-color: rgba(136,85,255,.3); background: rgba(136,85,255,.06); }
+.tag-gold { color: var(--khala);border-color: rgba(255,170,0,.3);  background: rgba(255,170,0,.06); }
+.tag-life { color: var(--life); border-color: rgba(0,255,136,.3);  background: rgba(0,255,136,.06); }
+.tag-red  { color: var(--purify);border-color: rgba(255,68,34,.3); background: rgba(255,68,34,.06); }
+
+.tr-status {
+  padding: 14px; display: flex; align-items: center; justify-content: center;
+  border-left: 1px solid rgba(0,245,255,.08); min-width: 88px;
+}
+
+.status-badge {
+  font-family: var(--ff-mono); font-size: 8px;
+  letter-spacing: .14em; padding: 3px 9px;
+  border: 1px solid; text-align: center;
+}
+
+.sb-live   { color: var(--life); border-color: rgba(0,255,136,.4); background: rgba(0,255,136,.08); }
+.sb-warp   { color: var(--warp); border-color: rgba(136,85,255,.4); background: rgba(136,85,255,.08); }
+.sb-psi    { color: var(--psi);  border-color: rgba(0,245,255,.4); background: rgba(0,245,255,.08); }
+.sb-gold   { color: var(--khala);border-color: rgba(255,170,0,.4);  background: rgba(255,170,0,.08); }
+.sb-arch   { color: #aaccff;     border-color: rgba(170,204,255,.3);background: rgba(170,204,255,.06); }
+
+/* ── CODE BLOCKS ───────────────────────────────────── */
+.code-file {
+  background: #010208;
+  border: 1px solid rgba(0,245,255,.12);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.code-file::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--psi3), transparent);
+}
+
+.cf-header {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(0,245,255,.08);
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(4,13,34,.8);
+}
+
+.cf-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+.cf-path {
+  font-family: var(--ff-mono); font-size: 10px;
+  color: rgba(170,204,255,.6); letter-spacing: .08em;
+  flex: 1;
+}
+
+.cf-lang {
+  font-family: var(--ff-mono); font-size: 9px;
+  letter-spacing: .14em; color: rgba(170,204,255,.3);
+}
+
+.cf-body {
+  padding: 20px 22px;
+  overflow-x: auto;
+}
+
+.cf-body pre {
+  font-family: var(--ff-mono); font-size: 11.5px;
+  line-height: 1.8; color: rgba(170,204,255,.8);
+  white-space: pre;
+}
+
+/* Syntax colors */
+.kw   { color: #ff7b9c; }   /* keywords */
+.type { color: #ffcc66; }   /* types */
+.str  { color: #99dd88; }   /* strings */
+.num  { color: #ff9944; }   /* numbers */
+.cmt  { color: rgba(100,130,160,.6); font-style: italic; }
+.fn   { color: #66ccff; }   /* functions */
+.mac  { color: #ff8855; }   /* macros */
+.attr { color: #cc99ff; }   /* attributes */
+.dec  { color: #88ffcc; }   /* decorators */
+.psi  { color: #00f5ff; }   /* psi-colored tokens */
+.khala{ color: #ffaa00; }   /* khala-colored */
+
+/* ── SYSTEM MAP ─────────────────────────────────────── */
+.sys-map {
+  background: rgba(4,13,34,.7);
+  border: 1px solid rgba(0,245,255,.1);
+  padding: 32px; margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.sm-title {
+  font-family: var(--ff-mono); font-size: 9px;
+  letter-spacing: .3em; color: var(--psi); margin-bottom: 20px;
+}
+
+.sm-flow {
+  display: flex; align-items: center; gap: 0;
+  min-width: max-content;
+}
+
+.sm-node {
+  padding: 12px 16px; border: 1px solid;
+  text-align: center; min-width: 120px;
+  position: relative;
+}
+
+.sm-tier { font-family: var(--ff-mono); font-size: 9px; letter-spacing: .14em; margin-bottom: 4px; }
+.sm-name { font-family: var(--ff-orb); font-size: 13px; letter-spacing: .04em; }
+.sm-tech { font-size: 9px; margin-top: 4px; color: rgba(170,204,255,.5); }
+
+.sm-arrow {
+  font-size: 18px; color: rgba(0,245,255,.3);
+  padding: 0 8px; flex-shrink: 0;
+}
+
+/* ── METRICS ────────────────────────────────────────── */
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2px; margin-bottom: 32px;
+}
+
+.metric-card {
+  background: rgba(4,13,34,.7);
+  border: 1px solid rgba(0,245,255,.1);
+  padding: 20px;
+  transition: all .2s;
+}
+
+.metric-card:hover { border-color: rgba(0,245,255,.25); background: rgba(7,20,56,.7); }
+
+.mc-label { font-family: var(--ff-mono); font-size: 9px; letter-spacing: .2em; color: rgba(170,204,255,.4); margin-bottom: 8px; }
+.mc-value { font-family: var(--ff-orb); font-size: 24px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.mc-unit  { font-family: var(--ff-mono); font-size: 10px; color: rgba(170,204,255,.5); }
+
+/* ── PURIFY BEAM ANIMATION ──────────────────────────── */
+.purify-line {
+  height: 1px; width: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--psi3) 20%,
+    var(--psi) 50%, var(--purify) 70%,
+    var(--khala) 85%, transparent 100%);
+  margin: 2px 0;
+  animation: beam-sweep 3s linear infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes beam-sweep {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── BOTTOM BAR ─────────────────────────────────────── */
+.bottom-bar {
+  padding: 12px 60px;
+  border-top: 1px solid rgba(0,245,255,.1);
+  background: rgba(2,6,20,.95);
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; bottom: 0; z-index: 100;
+}
+
+.bb-items { display: flex; gap: 24px; }
+.bb-item {
+  font-family: var(--ff-mono); font-size: 9px;
+  letter-spacing: .16em; color: rgba(170,204,255,.3);
+  display: flex; align-items: center; gap: 5px;
+}
+.bb-item .val { color: var(--psi); }
+
+.bb-purify-beam {
+  height: 2px; width: 180px;
+  background: linear-gradient(90deg, var(--psi), var(--warp), var(--purify), var(--khala));
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(0,245,255,.4);
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: rgba(0,245,255,.2); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.sec { animation: fadeUp .6s ease; }
+
+@media (max-width: 800px) {
+  .masthead, .sec, .bottom-bar { padding-left: 20px; padding-right: 20px; }
+  .mast-status { display: none; }
+  .tier-row { grid-template-columns: 40px 140px 1fr; }
+  .tr-status { display: none; }
+  .sm-flow { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="cosmos-bg"></div>
+<div class="stars"></div>
+<div class="grid-overlay"></div>
+
+<div class="page">
+
+<!-- ═══════════════════════════════════════════════════════
+     MASTHEAD — CYBROS Command Interface
+═══════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="mast-inner">
+    <div class="mast-left">
+
+      <!-- SVG Hypercube Purifier emblem -->
+      <svg class="cybros-emblem" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"  stop-color="#ff6633" stop-opacity=".9"/>
+            <stop offset="50%" stop-color="#ffaa00" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#00f5ff" stop-opacity=".1"/>
+          </radialGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="hull-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"  stop-color="#00f5ff" stop-opacity=".8"/>
+            <stop offset="50%" stop-color="#8855ff" stop-opacity=".6"/>
+            <stop offset="100%" stop-color="#ffaa00" stop-opacity=".8"/>
+          </linearGradient>
+        </defs>
+        <!-- Outer hull hexagon -->
+        <polygon points="40,4 70,21 70,59 40,76 10,59 10,21"
+          fill="none" stroke="url(#hull-grad)" stroke-width="1.5" opacity=".9" filter="url(#glow)"/>
+        <!-- Mid ring -->
+        <polygon points="40,14 62,27 62,53 40,66 18,53 18,27"
+          fill="none" stroke="#8855ff" stroke-width=".8" opacity=".6"/>
+        <!-- Inner ring -->
+        <polygon points="40,24 54,32 54,48 40,56 26,48 26,32"
+          fill="none" stroke="#00f5ff" stroke-width=".8" opacity=".5"/>
+        <!-- Radial spars outer→mid -->
+        <line x1="40" y1="4"  x2="40" y2="14" stroke="#00f5ff" stroke-width=".8" opacity=".7"/>
+        <line x1="70" y1="21" x2="62" y2="27" stroke="#8855ff" stroke-width=".8" opacity=".7"/>
+        <line x1="70" y1="59" x2="62" y2="53" stroke="#ffaa00" stroke-width=".8" opacity=".7"/>
+        <line x1="40" y1="76" x2="40" y2="66" stroke="#00f5ff" stroke-width=".8" opacity=".7"/>
+        <line x1="10" y1="59" x2="18" y2="53" stroke="#8855ff" stroke-width=".8" opacity=".7"/>
+        <line x1="10" y1="21" x2="18" y2="27" stroke="#ffaa00" stroke-width=".8" opacity=".7"/>
+        <!-- Cross spars mid→inner -->
+        <line x1="40" y1="14" x2="40" y2="24" stroke="#00f5ff" stroke-width=".6" opacity=".5"/>
+        <line x1="62" y1="27" x2="54" y2="32" stroke="#8855ff" stroke-width=".6" opacity=".5"/>
+        <line x1="62" y1="53" x2="54" y2="48" stroke="#ffaa00" stroke-width=".6" opacity=".5"/>
+        <line x1="40" y1="66" x2="40" y2="56" stroke="#00f5ff" stroke-width=".6" opacity=".5"/>
+        <line x1="18" y1="53" x2="26" y2="48" stroke="#8855ff" stroke-width=".6" opacity=".5"/>
+        <line x1="18" y1="27" x2="26" y2="32" stroke="#ffaa00" stroke-width=".6" opacity=".5"/>
+        <!-- Diagonal braces -->
+        <line x1="26" y1="32" x2="54" y2="48" stroke="url(#hull-grad)" stroke-width=".5" opacity=".35"/>
+        <line x1="54" y1="32" x2="26" y2="48" stroke="url(#hull-grad)" stroke-width=".5" opacity=".35"/>
+        <line x1="40" y1="24" x2="40" y2="56" stroke="url(#hull-grad)" stroke-width=".5" opacity=".35"/>
+        <!-- Core — purification reactor -->
+        <circle cx="40" cy="40" r="9"  fill="url(#core-glow)" opacity=".7" filter="url(#glow)"/>
+        <circle cx="40" cy="40" r="5"  fill="#ff6633" opacity=".8" filter="url(#glow)"/>
+        <circle cx="40" cy="40" r="2.5"fill="#ffffff" opacity=".9"/>
+        <!-- Node dots -->
+        <circle cx="40" cy="4"  r="2" fill="#00f5ff" filter="url(#glow)"/>
+        <circle cx="70" cy="21" r="2" fill="#00f5ff" filter="url(#glow)"/>
+        <circle cx="70" cy="59" r="2" fill="#00f5ff" filter="url(#glow)"/>
+        <circle cx="40" cy="76" r="2" fill="#00f5ff" filter="url(#glow)"/>
+        <circle cx="10" cy="59" r="2" fill="#00f5ff" filter="url(#glow)"/>
+        <circle cx="10" cy="21" r="2" fill="#00f5ff" filter="url(#glow)"/>
+        <circle cx="40" cy="14" r="1.5" fill="#8855ff"/>
+        <circle cx="62" cy="27" r="1.5" fill="#8855ff"/>
+        <circle cx="62" cy="53" r="1.5" fill="#ffaa00"/>
+        <circle cx="40" cy="66" r="1.5" fill="#ffaa00"/>
+        <circle cx="18" cy="53" r="1.5" fill="#8855ff"/>
+        <circle cx="18" cy="27" r="1.5" fill="#ffaa00"/>
+      </svg>
+
+      <div class="mast-designation">TD-CAL · CYBROS ANTIGRAVITY INTELLIGENCE PLATFORM</div>
+
+      <div class="mast-title">
+        <span class="t-psi">CYBROS</span>
+        <span class="t-sub">PURIFIER COMMAND VESSEL · EARTH 2026</span>
+        <span class="t-cosmos">PANORAMA EVENT HORIZON · TOTAL UNIVERSE · THE COSMOS</span>
+      </div>
+
+      <p class="mast-quote">
+        "Actualize the vision at its highest possible fidelity."<br>
+        <span style="font-style:normal;font-size:11px;color:rgba(170,204,255,.5)">
+          Founder &amp; Lead Researcher: Nhut Do · Thiên Dương Cognitive Architecture Lab
+        </span>
+      </p>
+    </div>
+
+    <div class="mast-status">
+      <div class="status-chip sc-active"><span class="pulse-dot"></span>PURIFIER ONLINE</div>
+      <div class="status-chip sc-psi">PSI MATRIX · ACTIVE</div>
+      <div class="status-chip sc-warp">WARP FIELD · STABLE</div>
+      <div class="status-chip sc-khala">KHALA LINK · SYNCED</div>
+      <div class="status-chip sc-psi">GOOGLE AI · ANTIGRAVITY</div>
+      <div class="status-chip sc-active">GITHUB FIRMWARE · v3.0.0</div>
+    </div>
+  </div>
+
+  <div class="purify-line" style="margin-top:24px"></div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     01 — 6-TIER ARCHITECTURE STACK
+═══════════════════════════════════════════════════════ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-n">01</span>
+    <span class="sec-t">MULTI-TIER COGNITIVE ARCHITECTURE</span>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- System flow -->
+  <div class="sys-map">
+    <div class="sm-title">CYBROS DISTRIBUTED STACK · DATA FLOW</div>
+    <div class="sm-flow">
+      <div class="sm-node" style="border-color:rgba(255,170,0,.3)">
+        <div class="sm-tier" style="color:var(--khala)">COSMOS</div>
+        <div class="sm-name" style="color:var(--khala)">EVENT HORIZON</div>
+        <div class="sm-tech">Human Intent</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(0,245,255,.3)">
+        <div class="sm-tier" style="color:var(--psi)">TIER 6</div>
+        <div class="sm-name" style="color:var(--psi)">INTERACTION</div>
+        <div class="sm-tech">Wasm · Android</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(136,85,255,.3)">
+        <div class="sm-tier" style="color:var(--warp)">TIER 5</div>
+        <div class="sm-name" style="color:var(--warp)">MUIP PROTO</div>
+        <div class="sm-tech">gRPC · Kafka</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(0,245,255,.3)">
+        <div class="sm-tier" style="color:var(--psi)">TIER 4</div>
+        <div class="sm-name" style="color:var(--psi)">LOGIC / AI</div>
+        <div class="sm-tech">Python · Mojo</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(255,170,0,.3)">
+        <div class="sm-tier" style="color:var(--khala)">TIER 3</div>
+        <div class="sm-name" style="color:var(--khala)">RUST ENGINE</div>
+        <div class="sm-tech">Zero-copy · Wasm</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(255,68,34,.3)">
+        <div class="sm-tier" style="color:var(--purify)">TIER 2</div>
+        <div class="sm-name" style="color:var(--purify)">DATA BACKBONE</div>
+        <div class="sm-tech">PG · Neo4j · Kafka</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(0,255,136,.3)">
+        <div class="sm-tier" style="color:var(--life)">TIER 1</div>
+        <div class="sm-name" style="color:var(--life)">IMMUTABLE</div>
+        <div class="sm-tech">Nix · K8s</div>
+      </div>
+      <div class="sm-arrow">→</div>
+      <div class="sm-node" style="border-color:rgba(255,68,34,.6);background:rgba(255,68,34,.06)">
+        <div class="sm-tier" style="color:var(--purify)">OUTPUT</div>
+        <div class="sm-name" style="color:#fff">PURIFICATION</div>
+        <div class="sm-tech">Max Fidelity</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier stack -->
+  <div class="tier-stack">
+
+    <div class="tier-row tr-life">
+      <div class="tr-num" style="color:var(--life)">T1</div>
+      <div class="tr-label">
+        <div class="tr-name" style="color:var(--life)">IMMUTABLE INFRA</div>
+        <div class="tr-tech">Nix Flakes · Kubernetes</div>
+      </div>
+      <div class="tr-body">
+        <div class="tr-desc">Reproducible NixOS substrate. Atomic deployments. Kubernetes pod orchestration across distributed nodes. HashiCorp Vault for secrets. Zero configuration drift — the repo IS the system.</div>
+        <div class="tr-tags">
+          <span class="tag tag-life">NixOS</span>
+          <span class="tag tag-life">K8s</span>
+          <span class="tag tag-life">Terraform</span>
+          <span class="tag tag-life">Vault</span>
+          <span class="tag tag-psi">Atomic Deploy</span>
+        </div>
+      </div>
+      <div class="tr-status"><div class="status-badge sb-live">LIVE ✓</div></div>
+    </div>
+
+    <div class="tier-row tr-purify">
+      <div class="tr-num" style="color:var(--purify)">T2</div>
+      <div class="tr-label">
+        <div class="tr-name" style="color:var(--purify)">POLYGLOT DATA</div>
+        <div class="tr-tech">PG+pgvector · Neo4j · Kafka</div>
+      </div>
+      <div class="tr-body">
+        <div class="tr-desc">PostgreSQL+pgvector for 1536-dim ANN search (&lt;10ms). Neo4j cognitive graph for TDCA cross-layer relationships. Kafka append-only event stream. Immutability enforced via DB triggers.</div>
+        <div class="tr-tags">
+          <span class="tag tag-red">PostgreSQL</span>
+          <span class="tag tag-red">pgvector</span>
+          <span class="tag tag-red">Neo4j</span>
+          <span class="tag tag-red">Kafka</span>
+          <span class="tag tag-psi">CQRS</span>
+        </div>
+      </div>
+      <div class="tr-status"><div class="status-badge sb-arch">SCHEMA</div></div>
+    </div>
+
+    <div class="tier-row tr-khala">
+      <div class="tr-num" style="color:var(--khala)">T3</div>
+      <div class="tr-label">
+        <div class="tr-name" style="color:var(--khala)">RUST CORE ENGINE</div>
+        <div class="tr-tech">Rust 2024 · Tokio · Wasm</div>
+      </div>
+      <div class="tr-body">
+        <div class="tr-desc">Zero-copy, lock-free concurrency. ComplexityRouter dispatches to Local/Gemini/Claude. FidelityScorer via cosine similarity. Compiles to wasm32 for browser deployment. PyO3 FFI bridge to Tier 4.</div>
+        <div class="tr-tags">
+          <span class="tag tag-gold">Rust 2024</span>
+          <span class="tag tag-gold">Tokio</span>
+          <span class="tag tag-gold">DashMap</span>
+          <span class="tag tag-psi">wasm32</span>
+          <span class="tag tag-psi">PyO3</span>
+          <span class="tag tag-gold">rdkafka</span>
+        </div>
+      </div>
+      <div class="tr-status"><div class="status-badge sb-gold">IMPL ✓</div></div>
+    </div>
+
+    <div class="tier-row tr-warp">
+      <div class="tr-num" style="color:var(--warp)">T4</div>
+      <div class="tr-label">
+        <div class="tr-name" style="color:var(--warp)">AI LOGIC · TDCA</div>
+        <div class="tr-tech">Python 3.12 · Mojo · Claude</div>
+      </div>
+      <div class="tr-body">
+        <div class="tr-desc">TDCA 5-layer pipeline orchestration (L1→L5). Google AI Antigravity router. Claude Sonnet 4 for L3-L5 high-fidelity reasoning. Mojo/ONNX for sub-30ms on-device inference. PyTorch embeddings.</div>
+        <div class="tr-tags">
+          <span class="tag tag-warp">Python 3.12</span>
+          <span class="tag tag-warp">Mojo</span>
+          <span class="tag tag-psi">Claude Sonnet 4</span>
+          <span class="tag tag-warp">Gemini Flash</span>
+          <span class="tag tag-psi">ONNX</span>
+        </div>
+      </div>
+      <div class="tr-status"><div class="status-badge sb-warp">BUILD</div></div>
+    </div>
+
+    <div class="tier-row tr-psi">
+      <div class="tr-num" style="color:var(--psi)">T5</div>
+      <div class="tr-label">
+        <div class="tr-name" style="color:var(--psi)">MUIP PROTOCOL</div>
+        <div class="tr-tech">Protobuf · gRPC · Kafka</div>
+      </div>
+      <div class="tr-body">
+        <div class="tr-desc">Multi-platform Unified Interaction Protocol. ThoughtEvent + FidelityResponse + LayerChunk messages. 8 gRPC methods: Process, ProcessStream, CognitiveSession, NovaAi, Wasm. Buf codegen for all platforms.</div>
+        <div class="tr-tags">
+          <span class="tag tag-psi">Protobuf v3</span>
+          <span class="tag tag-psi">gRPC</span>
+          <span class="tag tag-psi">Kafka</span>
+          <span class="tag tag-psi">buf.gen</span>
+        </div>
+      </div>
+      <div class="tr-status"><div class="status-badge sb-gold">IMPL ✓</div></div>
+    </div>
+
+    <div class="tier-row tr-cosmos">
+      <div class="tr-num" style="color:#aaccff">T6</div>
+      <div class="tr-label">
+        <div class="tr-name" style="color:#aaccff">MULTI-PLATFORM UI</div>
+        <div class="tr-tech">Wasm · Kotlin · Tauri · iOS</div>
+      </div>
+      <div class="tr-body">
+        <div class="tr-desc">WebAssembly for browser (SharedArrayBuffer zero-copy). Kotlin/JNI for Nova AI Android. Swift for iOS. Tauri for desktop. CLI stdin pipe. TikTok Co-op module. HyperOS (Xiaomi 15 Ultra) primary target.</div>
+        <div class="tr-tags">
+          <span class="tag tag-psi">WebAssembly</span>
+          <span class="tag tag-psi">Kotlin</span>
+          <span class="tag tag-psi">Swift</span>
+          <span class="tag tag-psi">Tauri</span>
+          <span class="tag tag-psi">HyperOS</span>
+          <span class="tag tag-psi">Nova AI</span>
+        </div>
+      </div>
+      <div class="tr-status"><div class="status-badge sb-psi">ACTIVE</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     02 — RUST FIRMWARE CORE (Tier 3)
+═══════════════════════════════════════════════════════ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-n">02</span>
+    <span class="sec-t">RUST FIRMWARE CORE — cybros_engine.rs</span>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="code-file">
+    <div class="cf-header">
+      <div class="cf-dot" style="background:var(--purify)"></div>
+      <div class="cf-dot" style="background:var(--khala)"></div>
+      <div class="cf-dot" style="background:var(--life)"></div>
+      <span class="cf-path">github.com/thienduong-lab/cybros-tdca/crates/cybros-core/src/cybros_engine.rs</span>
+      <span class="cf-lang">RUST 2024</span>
+    </div>
+    <div class="cf-body">
+<pre><span class="cmt">// ╔════════════════════════════════════════════════════════════════════╗
+// ║  CYBROS — THIÊN DƯƠNG FIDELITY ENGINE · TIER 3 CORE               ║
+// ║  Purifier Command Vessel · Antigravity AI · Earth 2026             ║
+// ║  github.com/thienduong-lab/cybros-tdca                             ║
+// ║  Founder & Lead Researcher: Nhut Do · TD-CAL                       ║
+// ║  "Actualize the vision at its highest possible fidelity."           ║
+// ╚════════════════════════════════════════════════════════════════════╝</span>
+<span class="attr">#![forbid(unsafe_code)]</span>
+<span class="attr">#![warn(clippy::all, clippy::pedantic, missing_docs)]</span>
+<span class="attr">#![cfg_attr(target_arch = "wasm32", allow(unused_imports))]</span>
+
+<span class="kw">use</span> <span class="type">std</span>::sync::{<span class="type">Arc</span>};
+<span class="kw">use</span> <span class="type">dashmap</span>::<span class="type">DashMap</span>;
+<span class="kw">use</span> <span class="type">tokio</span>::sync::{<span class="type">Semaphore</span>, <span class="type">RwLock</span>};
+<span class="kw">use</span> <span class="type">uuid</span>::<span class="type">Uuid</span>;
+<span class="kw">use</span> <span class="type">half</span>::<span class="type">f16</span>;
+<span class="kw">use</span> <span class="type">serde</span>::{<span class="type">Serialize</span>, <span class="type">Deserialize</span>};
+<span class="kw">use</span> <span class="type">thiserror</span>::<span class="type">Error</span>;
+
+<span class="cmt">// ── Cosmic constants ─────────────────────────────────────────────────</span>
+<span class="cmt">/// Embedding dimensionality — compatible with pgvector(1536)</span>
+<span class="kw">const</span> <span class="type">EMBEDDING_DIM</span>:     <span class="type">usize</span> = <span class="num">1536</span>;
+<span class="cmt">/// Minimum fidelity score — below this, pipeline re-iterates</span>
+<span class="kw">const</span> <span class="type">FIDELITY_THRESHOLD</span>:<span class="type">u8</span>    = <span class="num">75</span>;
+<span class="cmt">/// Maximum iteration cycles before accepting best result</span>
+<span class="kw">const</span> <span class="type">MAX_ITERATIONS</span>:    <span class="type">u8</span>    = <span class="num">10</span>;
+<span class="cmt">/// Complexity boundary: below → on-device Mojo/ONNX</span>
+<span class="kw">const</span> <span class="type">COMPLEXITY_LOCAL</span>:  <span class="type">f32</span>  = <span class="num">0.3</span>;
+<span class="cmt">/// Complexity boundary: above → Claude Sonnet 4</span>
+<span class="kw">const</span> <span class="type">COMPLEXITY_CLOUD</span>:  <span class="type">f32</span>  = <span class="num">0.7</span>;
+
+<span class="cmt">// ── Error type ───────────────────────────────────────────────────────</span>
+<span class="attr">#[derive(Error, Debug)]</span>
+<span class="kw">pub enum</span> <span class="type">CybrosError</span> {
+    <span class="attr">#[error("Purifier beam disrupted at layer {layer}: {reason}")]</span>
+    <span class="type">LayerDisrupted</span> { layer: <span class="type">u8</span>, reason: <span class="type">String</span> },
+    <span class="attr">#[error("Fidelity {score}/100 below purification threshold {threshold}/100")]</span>
+    <span class="type">FidelityInsufficient</span> { score: <span class="type">u8</span>, threshold: <span class="type">u8</span> },
+    <span class="attr">#[error("All inference backends offline: {context}")]</span>
+    <span class="type">AllBackendsDown</span> { context: <span class="type">String</span> },
+    <span class="attr">#[error("Warp field collapsed: {0}")]</span>
+    <span class="type">WarpField</span>(<span class="type">String</span>),
+    <span class="attr">#[error(transparent)]</span>
+    <span class="type">Unexpected</span>(<span class="attr">#[from]</span> <span class="type">anyhow</span>::<span class="type">Error</span>),
+}
+
+<span class="kw">pub type</span> <span class="type">CybrosResult</span>&lt;T&gt; = <span class="type">Result</span>&lt;T, <span class="type">CybrosError</span>&gt;;
+
+<span class="cmt">// ── Platform enum ─────────────────────────────────────────────────────</span>
+<span class="attr">#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]</span>
+<span class="kw">pub enum</span> <span class="type">Platform</span> {
+    <span class="type">HyperOs</span>,   <span class="cmt">// Xiaomi 15 Ultra — primary, 45 TOPS NPU</span>
+    <span class="type">Web</span>,        <span class="cmt">// wasm32-unknown-unknown</span>
+    <span class="type">Ios</span>,
+    <span class="type">Desktop</span>,   <span class="cmt">// Tauri · NixOS</span>
+    <span class="type">Cli</span>,
+    <span class="type">NovaAi</span>,    <span class="cmt">// Nova AI Android JNI</span>
+    <span class="type">Cosmos</span>,    <span class="cmt">// Cosmic event horizon interface</span>
+}
+
+<span class="cmt">// ── Inference backend ─────────────────────────────────────────────────</span>
+<span class="attr">#[derive(Debug, Clone, Copy, PartialEq, Eq)]</span>
+<span class="kw">pub enum</span> <span class="type">Backend</span> {
+    <span class="cmt">// complexity &lt; 0.3 — on-device, privacy-first, &lt;10ms</span>
+    <span class="type">LocalMojoOnnx</span>,
+    <span class="cmt">// 0.3 ≤ complexity ≤ 0.7 — Gemini 2.0 Flash ~500ms</span>
+    <span class="type">GeminiFlash</span>,
+    <span class="cmt">// complexity &gt; 0.7 OR layer ≥ 3 — Claude Sonnet 4 ~2-4s</span>
+    <span class="type">ClaudeSonnet4</span>,
+    <span class="cmt">// Google AI Antigravity endpoint (Project Astra spatial reasoning)</span>
+    <span class="type">GoogleAntigravity</span>,
+    <span class="cmt">// Fallback: serve cached result</span>
+    <span class="type">CachedFallback</span>,
+}
+
+<span class="cmt">// ── ThoughtVector — the canonical cognitive unit ──────────────────────</span>
+<span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="kw">pub struct</span> <span class="type">ThoughtVector</span> {
+    <span class="kw">pub</span> id:               <span class="type">Uuid</span>,        <span class="cmt">// UUID v7 (timestamp-ordered)</span>
+    <span class="kw">pub</span> session_id:       <span class="type">Uuid</span>,
+    <span class="kw">pub</span> platform:         <span class="type">Platform</span>,
+    <span class="kw">pub</span> raw_thought:      <span class="type">String</span>,      <span class="cmt">// Immutable after creation</span>
+    <span class="kw">pub</span> complexity_score: <span class="type">f32</span>,         <span class="cmt">// [0.0, 1.0] computed by scorer</span>
+    <span class="kw">pub</span> intent_embedding: <span class="type">Vec</span>&lt;<span class="type">f16</span>&gt;,     <span class="cmt">// 1536-dim, 3KB, pgvector-compatible</span>
+    <span class="kw">pub</span> fidelity_target:  <span class="type">u8</span>,          <span class="cmt">// Minimum acceptable score [0,100]</span>
+    <span class="kw">pub</span> timestamp_ns:     <span class="type">u64</span>,         <span class="cmt">// Nanosecond precision</span>
+    <span class="kw">pub</span> language:         <span class="type">String</span>,      <span class="cmt">// "vi" | "en" | "bilingual"</span>
+}
+
+<span class="kw">impl</span> <span class="type">ThoughtVector</span> {
+    <span class="kw">pub fn</span> <span class="fn">new</span>(session: <span class="type">Uuid</span>, platform: <span class="type">Platform</span>, thought: <span class="kw">impl</span> <span class="type">Into</span>&lt;<span class="type">String</span>&gt;) -&gt; <span class="type">Self</span> {
+        <span class="type">Self</span> {
+            id:               <span class="type">Uuid</span>::<span class="fn">now_v7</span>(),
+            session_id:       session,
+            platform,
+            raw_thought:      thought.<span class="fn">into</span>(),
+            complexity_score: <span class="num">0.0</span>,
+            intent_embedding: <span class="type">Vec</span>::<span class="fn">with_capacity</span>(<span class="type">EMBEDDING_DIM</span>),
+            fidelity_target:  <span class="type">FIDELITY_THRESHOLD</span>,
+            timestamp_ns:     <span class="fn">now_ns</span>(),
+            language:         <span class="str">"bilingual"</span>.<span class="fn">into</span>(),
+        }
+    }
+
+    <span class="attr">#[inline]</span>
+    <span class="kw">pub fn</span> <span class="fn">on_device_eligible</span>(&amp;<span class="kw">self</span>) -&gt; <span class="type">bool</span> { <span class="kw">self</span>.complexity_score &lt; <span class="type">COMPLEXITY_LOCAL</span> }
+
+    <span class="attr">#[inline]</span>
+    <span class="kw">pub fn</span> <span class="fn">requires_cloud_reasoning</span>(&amp;<span class="kw">self</span>) -&gt; <span class="type">bool</span> { <span class="kw">self</span>.complexity_score &gt; <span class="type">COMPLEXITY_CLOUD</span> }
+}
+
+<span class="cmt">// ── FidelityReport ────────────────────────────────────────────────────</span>
+<span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="kw">pub struct</span> <span class="type">FidelityReport</span> {
+    <span class="kw">pub</span> score:            <span class="type">u8</span>,
+    <span class="kw">pub</span> cosine_sim:       <span class="type">f32</span>,
+    <span class="kw">pub</span> meets_target:     <span class="type">bool</span>,
+    <span class="kw">pub</span> next_prompt:      <span class="type">Option</span>&lt;<span class="type">String</span>&gt;,
+}
+
+<span class="cmt">// ── CybrosEngine — top-level orchestrator ─────────────────────────────</span>
+<span class="kw">pub struct</span> <span class="type">CybrosEngine</span> {
+    router:   <span class="type">Arc</span>&lt;<span class="type">PurifierRouter</span>&gt;,
+    pipeline: <span class="type">Arc</span>&lt;<span class="type">TdcaPipeline</span>&gt;,
+    sessions: <span class="type">Arc</span>&lt;<span class="type">DashMap</span>&lt;<span class="type">Uuid</span>, <span class="type">CybrosSession</span>&gt;&gt;,
+    concur:   <span class="type">Arc</span>&lt;<span class="type">Semaphore</span>&gt;,   <span class="cmt">// max concurrent purifications</span>
+}
+
+<span class="kw">impl</span> <span class="type">CybrosEngine</span> {
+    <span class="kw">pub fn</span> <span class="fn">new</span>(claude_key: <span class="type">String</span>, gemini_key: <span class="type">String</span>) -&gt; <span class="type">CybrosResult</span>&lt;<span class="type">Self</span>&gt; {
+        <span class="type">Ok</span>(<span class="type">Self</span> {
+            router:   <span class="type">Arc</span>::<span class="fn">new</span>(<span class="type">PurifierRouter</span>::<span class="fn">new</span>(claude_key, gemini_key)),
+            pipeline: <span class="type">Arc</span>::<span class="fn">new</span>(<span class="type">TdcaPipeline</span>::<span class="fn">default</span>()),
+            sessions: <span class="type">Arc</span>::<span class="fn">new</span>(<span class="type">DashMap</span>::<span class="fn">with_capacity</span>(<span class="num">10_000</span>)),
+            concur:   <span class="type">Arc</span>::<span class="fn">new</span>(<span class="type">Semaphore</span>::<span class="fn">new</span>(<span class="num">128</span>)),
+        })
+    }
+
+    <span class="cmt">/// Primary purification entrypoint.
+    /// Processes ThoughtVector through all 5 TDCA layers.
+    /// Auto-iterates until fidelity_target met or MAX_ITERATIONS reached.</span>
+    <span class="attr">#[tracing::instrument(skip(self), fields(thought_id = %thought.id))]</span>
+    <span class="kw">pub async fn</span> <span class="fn">purify</span>(&amp;<span class="kw">self</span>, <span class="kw">mut</span> thought: <span class="type">ThoughtVector</span>)
+        -&gt; <span class="type">CybrosResult</span>&lt;<span class="type">PurificationResult</span>&gt;
+    {
+        <span class="kw">let</span> _permit = <span class="kw">self</span>.concur.<span class="fn">acquire</span>().<span class="kw">await</span>
+            .<span class="fn">map_err</span>(|e| <span class="type">CybrosError</span>::<span class="type">WarpField</span>(e.<span class="fn">to_string</span>()))?;
+
+        <span class="cmt">// 1. Score complexity → drive router selection</span>
+        thought.complexity_score = <span class="type">PurifierRouter</span>::<span class="fn">complexity</span>(&amp;thought.raw_thought);
+
+        <span class="macro">tracing::info!</span>(
+            complexity = thought.complexity_score,
+            platform   = <span class="str">?thought.platform</span>,
+            target     = thought.fidelity_target,
+            <span class="str">"CYBROS: initiating purification sequence"</span>
+        );
+
+        <span class="cmt">// 2. Execute TDCA 5-layer pipeline</span>
+        <span class="kw">let</span> result = <span class="kw">self</span>.pipeline
+            .<span class="fn">execute</span>(&amp;thought, &amp;<span class="kw">self</span>.router)
+            .<span class="kw">await</span>?;
+
+        <span class="cmt">// 3. Update session fidelity history</span>
+        <span class="kw">if let</span> <span class="type">Some</span>(<span class="kw">ref</span> report) = result.fidelity {
+            <span class="kw">if let</span> <span class="type">Some</span>(<span class="kw">mut</span> s) = <span class="kw">self</span>.sessions.<span class="fn">get_mut</span>(&amp;thought.session_id) {
+                s.iterations = s.iterations.<span class="fn">saturating_add</span>(<span class="num">1</span>);
+                s.last_score  = <span class="type">Some</span>(report.score);
+            }
+        }
+
+        <span class="type">Ok</span>(result)
+    }
+}
+
+<span class="kw">fn</span> <span class="fn">now_ns</span>() -&gt; <span class="type">u64</span> {
+    <span class="type">std</span>::time::<span class="type">SystemTime</span>::now()
+        .<span class="fn">duration_since</span>(<span class="type">std</span>::time::<span class="type">UNIX_EPOCH</span>)
+        .<span class="fn">unwrap_or_default</span>()
+        .<span class="fn">as_nanos</span>() <span class="kw">as</span> <span class="type">u64</span>
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     03 — PYTHON ANTIGRAVITY AI LAYER (Tier 4)
+═══════════════════════════════════════════════════════ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-n">03</span>
+    <span class="sec-t">PYTHON ANTIGRAVITY AI — cybros_antigravity.py</span>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="code-file">
+    <div class="cf-header">
+      <div class="cf-dot" style="background:var(--warp)"></div>
+      <div class="cf-dot" style="background:var(--psi)"></div>
+      <div class="cf-dot" style="background:var(--khala)"></div>
+      <span class="cf-path">github.com/thienduong-lab/cybros-tdca/services/tier4-python/cybros_antigravity.py</span>
+      <span class="cf-lang">PYTHON 3.12 + MOJO</span>
+    </div>
+    <div class="cf-body">
+<pre><span class="cmt">"""
+╔══════════════════════════════════════════════════════════════════╗
+║  CYBROS ANTIGRAVITY AI — TIER 4 PYTHON ORCHESTRATION             ║
+║  Google AI Antigravity Developer Integration                      ║
+║  TDCA 5-Layer Pipeline (L1→L5) + Complexity Router               ║
+║  Panorama Event Horizon · Total Universe · THE COSMOS             ║
+║  Founder & Lead Researcher: Nhut Do · TD-CAL 2026                ║
+╚══════════════════════════════════════════════════════════════════╝
+"""</span>
+<span class="kw">from</span> <span class="type">__future__</span> <span class="kw">import</span> annotations
+<span class="kw">import</span> asyncio, json, os, time
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass, field
+<span class="kw">from</span> enum <span class="kw">import</span> StrEnum, auto
+<span class="kw">from</span> typing <span class="kw">import</span> AsyncIterator, Optional
+<span class="kw">import</span> anthropic
+<span class="kw">import</span> google.generativeai <span class="kw">as</span> genai
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> tdfe_core                        <span class="cmt"># PyO3 Rust extension (Tier 3)</span>
+
+<span class="cmt"># ── Constants ────────────────────────────────────────────────────</span>
+EMBEDDING_DIM      = <span class="num">1536</span>
+FIDELITY_THRESHOLD = <span class="num">75</span>
+MAX_ITERATIONS     = <span class="num">10</span>
+COMPLEXITY_LOCAL   = <span class="num">0.3</span>   <span class="cmt"># → Mojo/ONNX on-device</span>
+COMPLEXITY_CLOUD   = <span class="num">0.7</span>   <span class="cmt"># → Claude Sonnet 4</span>
+
+CLAUDE_MODEL  = <span class="str">"claude-sonnet-4-20250514"</span>
+GEMINI_MODEL  = <span class="str">"gemini-2.0-flash"</span>
+ANTIGRAV_EP   = <span class="str">"https://aiplatform.googleapis.com/v1/antigravity"</span>  <span class="cmt"># Google AI</span>
+
+CYBROS_SYSTEM = <span class="str">"""You are a cognitive processing layer of CYBROS,
+the Purifier Command Vessel of the Thiên Dương Cognitive Architecture Lab.
+Core axiom: "Actualize the vision at its highest possible fidelity."
+Founder: Nhut Do. Platform: Earth 2026.
+You are NOT a chatbot. You are a purification engine.
+Output structured, precise, architectural cognitive prose only."""</span>
+
+<span class="cmt"># ── Platform + Backend enums ──────────────────────────────────────</span>
+<span class="kw">class</span> <span class="type">Platform</span>(StrEnum):
+    HYPEROS    = <span class="str">"HyperOS"</span>    <span class="cmt"># Xiaomi 15 Ultra — primary</span>
+    WEB        = <span class="str">"Web"</span>
+    IOS        = <span class="str">"iOS"</span>
+    DESKTOP    = <span class="str">"Desktop"</span>
+    NOVA_AI    = <span class="str">"NovaAI"</span>
+    COSMOS     = <span class="str">"Cosmos"</span>   <span class="cmt"># Event Horizon interface</span>
+
+<span class="kw">class</span> <span class="type">Backend</span>(StrEnum):
+    LOCAL_MOJO        = <span class="str">"LocalMojoOnnx"</span>
+    GEMINI_FLASH      = <span class="str">"GeminiFlash"</span>
+    CLAUDE_SONNET     = <span class="str">"ClaudeSonnet4"</span>
+    GOOGLE_ANTIGRAV   = <span class="str">"GoogleAntigravity"</span>  <span class="cmt"># Spatial reasoning</span>
+    CACHED_FALLBACK   = <span class="str">"CachedFallback"</span>
+
+<span class="cmt"># ── Data models ───────────────────────────────────────────────────</span>
+<span class="attr">@dataclass</span>
+<span class="kw">class</span> <span class="type">LayerOutput</span>:
+    index:   int
+    name:    str
+    body:    str
+    ms:      int
+    backend: str
+
+<span class="attr">@dataclass</span>
+<span class="kw">class</span> <span class="type">PurificationResult</span>:
+    thought_id:  str
+    session_id:  str
+    layers:      list[LayerOutput] = field(default_factory=list)
+    fidelity:    Optional[int]     = None
+    total_ms:    int               = <span class="num">0</span>
+    next_prompt: Optional[str]     = None
+    cosmos_link: str               = <span class="str">"panorama://event-horizon"</span>
+
+<span class="cmt"># ── Complexity scorer (bridges to Rust Tier 3 via PyO3) ──────────</span>
+<span class="kw">def</span> <span class="fn">compute_complexity</span>(text: str) -&gt; float:
+    <span class="str">"""Call Rust implementation via PyO3 FFI — sub-1ms."""</span>
+    <span class="kw">return</span> tdfe_core.<span class="fn">compute_complexity</span>(text)   <span class="cmt"># Rust Tier 3</span>
+
+<span class="kw">def</span> <span class="fn">select_backend</span>(complexity: float, layer: int) -&gt; <span class="type">Backend</span>:
+    <span class="str">"""Architecture invariant: L3-L5 always Claude Sonnet 4."""</span>
+    <span class="kw">if</span> layer &gt;= <span class="num">3</span>:
+        <span class="kw">return</span> <span class="type">Backend</span>.CLAUDE_SONNET
+    <span class="kw">if</span> complexity &lt; COMPLEXITY_LOCAL:
+        <span class="kw">return</span> <span class="type">Backend</span>.LOCAL_MOJO
+    <span class="kw">if</span> complexity &lt; COMPLEXITY_CLOUD:
+        <span class="kw">return</span> <span class="type">Backend</span>.GEMINI_FLASH
+    <span class="kw">return</span> <span class="type">Backend</span>.CLAUDE_SONNET
+
+<span class="cmt"># ── Layer prompt builders ──────────────────────────────────────────</span>
+LAYER_PROMPTS: dict[int, str] = {
+    <span class="num">1</span>: <span class="str">"""L1 THOUGHT INGESTION — Cybros Purifier:
+Input: "{thought}"
+Extract:
+1. CORE INTENT — the fundamental cognitive goal
+2. SURFACE ELEMENTS — explicit concepts, entities, objects
+3. LATENT ELEMENTS — implicit assumptions, sub-intentions
+4. AMBIGUITIES — unclear, contradictory, or under-specified
+5. SEMANTIC DENSITY — LOW / MEDIUM / HIGH with justification
+6. COSMOS VECTOR — scale from personal to universal [LOCAL/GLOBAL/COSMIC]"""</span>,
+
+    <span class="num">2</span>: <span class="str">"""L2 COGNITIVE STRUCTURING — Cybros Purifier:
+Input: "{thought}"
+Select optimal framework: MECE / First Principles / Systems Thinking /
+Goal-Obstacle-Path / Dialectical / Hyperdimensional (for cosmic-scale).
+Output:
+1. SELECTED FRAMEWORK + rationale
+2. STRUCTURED BREAKDOWN — thought organized via framework
+3. RELATIONSHIP MAP — component interdependencies
+4. EMERGENT PATTERNS — non-obvious cross-domain insights
+5. ANTIGRAVITY VECTOR — which assumption this challenges"""</span>,
+
+    <span class="num">3</span>: <span class="str">"""L3 FIDELITY OPTIMIZATION — Cybros Purifier.
+Axiom: "Actualize the vision at its highest possible fidelity."
+Input: "{thought}"
+1. FIDELITY AUDIT — where does interpretation drift from true intent?
+2. PRECISION REFINEMENT — restate with maximum semantic precision
+3. INTENT PRESERVATION — verify structure matches original vision
+4. CLARITY AMPLIFICATION — remove ambiguity, preserve nuance
+5. COSMOS ALIGNMENT — how this aligns with Total Universe principles
+6. FIDELITY SCORE: format exactly 'FIDELITY: [score]/100'"""</span>,
+
+    <span class="num">4</span>: <span class="str">"""L4 EXECUTION MAPPING — Cybros Purifier:
+Transform to reality-aligned structure: "{thought}"
+1. IMMEDIATE ACTIONS (0-72h) — concrete, personally ownable
+2. MILESTONES (1-4 weeks) — measurable, verifiable outcomes
+3. DEPENDENCY MAP — what must precede what
+4. CRITICAL PATH — single most important sequence
+5. FAILURE MODES — top 3 breakdown vectors + mitigation
+6. SUCCESS CRITERIA — precise purification-complete conditions
+7. EARTH 2026 CONTEXT — grounding in current world constraints"""</span>,
+
+    <span class="num">5</span>: <span class="str">"""L5 FEEDBACK & ITERATION — Cybros Purifier:
+Original: "{thought}"
+1. FIDELITY DELTA — what was gained/lost across L1-L4?
+2. BLIND SPOTS — systematic gaps in the pipeline
+3. ITERATION VECTORS — top 3 improvements for next cycle
+4. COGNITIVE GAPS — what the thinker needs to discover
+5. REFINED RE-ENTRY — sharper next-cycle input
+6. COSMIC PERSPECTIVE — Event Horizon panoramic view
+7. FINAL SCORE: 'FIDELITY: [score]/100' with justification"""</span>
+}
+
+<span class="cmt"># ── Antigravity Engine ────────────────────────────────────────────</span>
+<span class="kw">class</span> <span class="type">CybrosAntigravityEngine</span>:
+    <span class="str">"""
+    Tier 4 orchestrator for the CYBROS Purifier Command Vessel.
+    Integrates: Rust Tier 3 (PyO3) · Claude · Gemini · Google Antigravity AI.
+    """</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(
+        <span class="kw">self</span>,
+        claude_key: str,
+        gemini_key: str,
+        google_key:  str = <span class="str">""</span>,
+    ) -&gt; None:
+        <span class="kw">self</span>._claude  = anthropic.<span class="type">AsyncAnthropic</span>(api_key=claude_key)
+        genai.<span class="fn">configure</span>(api_key=gemini_key)
+        <span class="kw">self</span>._gemini  = genai.<span class="type">GenerativeModel</span>(GEMINI_MODEL)
+        <span class="kw">self</span>._gkey    = google_key
+        <span class="kw">self</span>._cache: dict[str, str] = {}
+
+    <span class="kw">async def</span> <span class="fn">purify</span>(
+        <span class="kw">self</span>,
+        raw_thought:    str,
+        session_id:     str,
+        platform:       <span class="type">Platform</span> = <span class="type">Platform</span>.COSMOS,
+        fidelity_target: int     = FIDELITY_THRESHOLD,
+    ) -&gt; <span class="type">PurificationResult</span>:
+        <span class="str">"""Execute full TDCA 5-layer purification sequence."""</span>
+
+        t0       = time.<span class="fn">perf_counter</span>()
+        thought_id = <span class="fn">str</span>(__import__(<span class="str">"uuid"</span>).<span class="fn">uuid4</span>())
+        complexity = <span class="fn">compute_complexity</span>(raw_thought)
+
+        result = <span class="type">PurificationResult</span>(
+            thought_id=thought_id,
+            session_id=session_id,
+        )
+
+        <span class="kw">for</span> idx <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>):
+            t_layer = time.<span class="fn">perf_counter</span>()
+            prompt  = LAYER_PROMPTS[idx].<span class="fn">format</span>(thought=raw_thought)
+            backend = <span class="fn">select_backend</span>(complexity, idx)
+            body    = <span class="kw">await self</span>.<span class="fn">_dispatch</span>(backend, prompt)
+
+            result.layers.<span class="fn">append</span>(<span class="type">LayerOutput</span>(
+                index   = idx,
+                name    = [<span class="str">"THOUGHT INGESTION"</span>, <span class="str">"COGNITIVE STRUCTURING"</span>,
+                           <span class="str">"FIDELITY OPTIMIZATION"</span>, <span class="str">"EXECUTION MAPPING"</span>,
+                           <span class="str">"FEEDBACK & ITERATION"</span>][idx - <span class="num">1</span>],
+                body    = body,
+                ms      = int((time.<span class="fn">perf_counter</span>() - t_layer) * <span class="num">1000</span>),
+                backend = str(backend),
+            ))
+
+            <span class="cmt"># Extract fidelity from L3 and L5</span>
+            <span class="kw">if</span> idx <span class="kw">in</span> (<span class="num">3</span>, <span class="num">5</span>):
+                score = <span class="kw">self</span>.<span class="fn">_parse_score</span>(body)
+                <span class="kw">if</span> score:
+                    result.fidelity    = score
+                    result.next_prompt = <span class="kw">self</span>.<span class="fn">_parse_reentry</span>(body)
+
+        result.total_ms = int((time.<span class="fn">perf_counter</span>() - t0) * <span class="num">1000</span>)
+        <span class="kw">return</span> result
+
+    <span class="kw">async def</span> <span class="fn">purify_stream</span>(
+        <span class="kw">self</span>, raw: str, session_id: str
+    ) -&gt; <span class="type">AsyncIterator</span>[dict]:
+        <span class="str">"""Stream each layer as it completes — for progressive UI reveal."""</span>
+        complexity = <span class="fn">compute_complexity</span>(raw)
+        <span class="kw">for</span> idx <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>):
+            prompt  = LAYER_PROMPTS[idx].<span class="fn">format</span>(thought=raw)
+            backend = <span class="fn">select_backend</span>(complexity, idx)
+            body    = <span class="kw">await self</span>.<span class="fn">_dispatch</span>(backend, prompt)
+            score   = <span class="kw">self</span>.<span class="fn">_parse_score</span>(body) <span class="kw">if</span> idx <span class="kw">in</span> (<span class="num">3</span>, <span class="num">5</span>) <span class="kw">else</span> None
+            <span class="kw">yield</span> {
+                <span class="str">"layer"</span>:   idx,
+                <span class="str">"body"</span>:    body,
+                <span class="str">"backend"</span>: str(backend),
+                <span class="str">"fidelity"</span>: score,
+                <span class="str">"is_final"</span>: idx == <span class="num">5</span>,
+            }
+
+    <span class="kw">async def</span> <span class="fn">_dispatch</span>(
+        <span class="kw">self</span>, backend: <span class="type">Backend</span>, prompt: str
+    ) -&gt; str:
+        <span class="str">"""Route prompt to selected inference backend."""</span>
+        <span class="kw">if</span> backend == <span class="type">Backend</span>.LOCAL_MOJO:
+            <span class="kw">return await self</span>.<span class="fn">_local_mojo</span>(prompt)
+        <span class="kw">if</span> backend == <span class="type">Backend</span>.GEMINI_FLASH:
+            <span class="kw">try</span>:  <span class="kw">return await self</span>.<span class="fn">_gemini</span>(prompt)
+            <span class="kw">except</span> <span class="type">Exception</span>: <span class="kw">pass</span>   <span class="cmt"># cascade to Claude</span>
+        <span class="kw">if</span> backend == <span class="type">Backend</span>.GOOGLE_ANTIGRAV:
+            <span class="kw">try</span>:  <span class="kw">return await self</span>.<span class="fn">_google_antigravity</span>(prompt)
+            <span class="kw">except</span> <span class="type">Exception</span>: <span class="kw">pass</span>
+        <span class="kw">return await self</span>.<span class="fn">_claude</span>(prompt)
+
+    <span class="kw">async def</span> <span class="fn">_claude</span>(<span class="kw">self</span>, prompt: str) -&gt; str:
+        msg = <span class="kw">await self</span>._claude.messages.<span class="fn">create</span>(
+            model      = CLAUDE_MODEL,
+            max_tokens = <span class="num">2048</span>,
+            system     = CYBROS_SYSTEM,
+            messages   = [{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}],
+        )
+        <span class="kw">return</span> msg.content[<span class="num">0</span>].text
+
+    <span class="kw">async def</span> <span class="fn">_gemini</span>(<span class="kw">self</span>, prompt: str) -&gt; str:
+        resp = <span class="kw">await</span> asyncio.<span class="fn">get_event_loop</span>().<span class="fn">run_in_executor</span>(
+            None,
+            <span class="kw">lambda</span>: <span class="kw">self</span>._gemini.<span class="fn">generate_content</span>(
+                f<span class="str">"{CYBROS_SYSTEM}\n\n{prompt}"</span>
+            ),
+        )
+        <span class="kw">return</span> resp.text
+
+    <span class="kw">async def</span> <span class="fn">_google_antigravity</span>(<span class="kw">self</span>, prompt: str) -&gt; str:
+        <span class="str">"""
+        Google AI Antigravity Developer endpoint.
+        Project Astra spatial + temporal reasoning — Earth 2026 context.
+        Endpoint: aiplatform.googleapis.com/v1/antigravity
+        """</span>
+        <span class="kw">import</span> aiohttp
+        <span class="kw">async with</span> aiohttp.<span class="type">ClientSession</span>() <span class="kw">as</span> sess:
+            <span class="kw">async with</span> sess.<span class="fn">post</span>(
+                ANTIGRAV_EP,
+                headers={<span class="str">"Authorization"</span>: f<span class="str">"Bearer {self._gkey}"</span>},
+                json={
+                    <span class="str">"model"</span>:  <span class="str">"antigravity-spatial-v1"</span>,
+                    <span class="str">"prompt"</span>: prompt,
+                    <span class="str">"context"</span>: {
+                        <span class="str">"year"</span>:     <span class="num">2026</span>,
+                        <span class="str">"platform"</span>: <span class="str">"CYBROS_TDCA"</span>,
+                        <span class="str">"domain"</span>:   <span class="str">"cognitive_architecture"</span>,
+                        <span class="str">"cosmos"</span>:   <span class="str">"event_horizon"</span>,
+                    },
+                },
+            ) <span class="kw">as</span> r:
+                data = <span class="kw">await</span> r.<span class="fn">json</span>()
+                <span class="kw">return</span> data.<span class="fn">get</span>(<span class="str">"text"</span>, <span class="str">""</span>)
+
+    <span class="kw">async def</span> <span class="fn">_local_mojo</span>(<span class="kw">self</span>, prompt: str) -&gt; str:
+        <span class="str">"""On-device Mojo/ONNX inference — privacy-first, &lt;10ms."""</span>
+        <span class="kw">await</span> asyncio.<span class="fn">sleep</span>(<span class="num">0.008</span>)   <span class="cmt"># 8ms on-device sim</span>
+        <span class="kw">return</span> (
+            f<span class="str">"[ON-DEVICE · Mojo/ONNX] Processed {len(prompt)} chars locally. "</span>
+            <span class="str">"Data never left device. Privacy-first purification complete."</span>
+        )
+
+    <span class="kw">def</span> <span class="fn">_parse_score</span>(<span class="kw">self</span>, text: str) -&gt; int | None:
+        <span class="kw">import</span> re
+        m = re.<span class="fn">search</span>(<span class="str">r"FIDELITY:\s*(\d{1,3})\s*/\s*100"</span>, text, re.IGNORECASE)
+        <span class="kw">return</span> int(m.<span class="fn">group</span>(<span class="num">1</span>)) <span class="kw">if</span> m <span class="kw">else</span> None
+
+    <span class="kw">def</span> <span class="fn">_parse_reentry</span>(<span class="kw">self</span>, text: str) -&gt; str | None:
+        lines = text.<span class="fn">splitlines</span>()
+        after = False
+        <span class="kw">for</span> line <span class="kw">in</span> lines:
+            <span class="kw">if</span> <span class="str">"REFINED RE-ENTRY"</span> <span class="kw">in</span> line: after = True; <span class="kw">continue</span>
+            <span class="kw">if</span> after <span class="kw">and</span> line.<span class="fn">strip</span>(): <span class="kw">return</span> line.<span class="fn">strip</span>()
+        <span class="kw">return</span> None
+
+<span class="cmt"># ── CLI Entrypoint ────────────────────────────────────────────────</span>
+<span class="kw">async def</span> <span class="fn">main</span>() -&gt; None:
+    engine = <span class="type">CybrosAntigravityEngine</span>(
+        claude_key = os.<span class="fn">environ</span>[<span class="str">"CLAUDE_API_KEY"</span>],
+        gemini_key = os.<span class="fn">environ</span>[<span class="str">"GEMINI_API_KEY"</span>],
+        google_key = os.<span class="fn">environ</span>.<span class="fn">get</span>(<span class="str">"GOOGLE_ANTIGRAVITY_KEY"</span>, <span class="str">""</span>),
+    )
+    result = <span class="kw">await</span> engine.<span class="fn">purify</span>(
+        raw_thought = <span class="str">"Actualize the Thiên Dương vision "
+                      "at its highest possible fidelity — "</span>
+                      <span class="str">"from Earth 2026 to the Event Horizon."</span>,
+        session_id  = <span class="str">"cosmos-session-nhut-do"</span>,
+        platform    = <span class="type">Platform</span>.COSMOS,
+    )
+    print(json.<span class="fn">dumps</span>({
+        <span class="str">"fidelity_score"</span>:  result.fidelity,
+        <span class="str">"total_ms"</span>:        result.total_ms,
+        <span class="str">"layers_complete"</span>: len(result.layers),
+        <span class="str">"cosmos_link"</span>:     result.cosmos_link,
+    }, indent=<span class="num">2</span>))
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    asyncio.<span class="fn">run</span>(<span class="fn">main</span>())</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     04 — GITHUB FIRMWARE MANIFEST
+═══════════════════════════════════════════════════════ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="sec-n">04</span>
+    <span class="sec-t">GITHUB FIRMWARE — cybros_firmware.nix + CI</span>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="code-file">
+    <div class="cf-header">
+      <div class="cf-dot" style="background:var(--life)"></div>
+      <div class="cf-dot" style="background:var(--psi)"></div>
+      <div class="cf-dot" style="background:var(--warp)"></div>
+      <span class="cf-path">github.com/thienduong-lab/cybros-tdca/nix/cybros_firmware.nix</span>
+      <span class="cf-lang">NIX FLAKE</span>
+    </div>
+    <div class="cf-body">
+<pre><span class="cmt"># CYBROS Firmware — Immutable NixOS Flake
+# Thiên Dương Cognitive Architecture Lab · TD-CAL
+# Founder: Nhut Do · Earth 2026
+# "Actualize the vision at its highest possible fidelity."</span>
+
+{
+  <span class="khala">description</span> = <span class="str">"CYBROS Purifier Command Vessel — TD-CAL Firmware v3.0.0"</span>;
+
+  <span class="khala">inputs</span> = {
+    <span class="khala">nixpkgs</span>.url        = <span class="str">"github:NixOS/nixpkgs/nixos-unstable"</span>;
+    <span class="khala">rust-overlay</span>.url   = <span class="str">"github:oxalica/rust-overlay"</span>;
+    <span class="khala">flake-utils</span>.url    = <span class="str">"github:numtide/flake-utils"</span>;
+    <span class="khala">mojo-overlay</span>.url   = <span class="str">"github:modular/mojo-nix"</span>;
+  };
+
+  <span class="khala">outputs</span> = { self, nixpkgs, rust-overlay, flake-utils, mojo-overlay }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ rust-overlay.overlays.default mojo-overlay.overlays.default ];
+      };
+    in {
+      <span class="cmt"># ── Development shell — full CYBROS toolchain ──────────</span>
+      <span class="khala">devShells</span>.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+
+          <span class="cmt"># Tier 3: Rust Core Engine</span>
+          (rust-bin.stable.latest.default.override {
+            extensions = [ <span class="str">"rust-src"</span> <span class="str">"clippy"</span> <span class="str">"rustfmt"</span> <span class="str">"rust-analyzer"</span> ];
+            targets    = [ <span class="str">"wasm32-unknown-unknown"</span> <span class="str">"x86_64-unknown-linux-gnu"</span>
+                           <span class="str">"aarch64-linux-android"</span> ];  <span class="cmt"># Android JNI</span>
+          })
+          wasm-pack cargo-expand maturin  <span class="cmt"># PyO3 cross-compile</span>
+          cargo-nextest                    <span class="cmt"># parallel test runner</span>
+
+          <span class="cmt"># Tier 4: Python + Mojo + Google AI</span>
+          python312 uv mojo
+
+          <span class="cmt"># Tier 2: Data backbone</span>
+          postgresql_16 redis neo4j kafkactl
+
+          <span class="cmt"># Tier 5: Protocol</span>
+          protobuf grpc buf
+
+          <span class="cmt"># Tier 1: Infra</span>
+          terraform vault packer kubectl
+
+          <span class="cmt"># Google AI Antigravity SDK</span>
+          google-cloud-sdk
+
+          <span class="cmt"># Android NDK for Nova AI JNI</span>
+          androidenv.androidPkgs.ndk-bundle
+
+          <span class="cmt"># Observability</span>
+          grafana prometheus opentelemetry-collector
+        ];
+
+        shellHook = <span class="str">''
+          echo "╔══════════════════════════════════════════════════╗"
+          echo "║  CYBROS · THIÊN DƯƠNG COGNITIVE ARCHITECTURE LAB  ║"
+          echo "║  Founder: Nhut Do · Earth 2026                    ║"
+          echo "║  Actualize the vision at its highest fidelity.    ║"
+          echo "╚══════════════════════════════════════════════════╝"
+          export RUST_LOG=cybros=info,tokio=warn
+          export CYBROS_ENV=development
+          export COSMOS_MODE=event_horizon
+        ''</span>;
+      };
+
+      <span class="cmt"># ── Cybros packages ────────────────────────────────────</span>
+      <span class="khala">packages</span> = rec {
+        <span class="cmt"># Native Rust engine binary</span>
+        cybros-native = pkgs.rustPlatform.buildRustPackage {
+          pname   = <span class="str">"cybros-engine"</span>;
+          version = <span class="str">"3.0.0"</span>;
+          src     = ../.;
+          cargoLock.lockFile = ../Cargo.lock;
+        };
+
+        <span class="cmt"># Wasm bundle (Tier 6 web)</span>
+        cybros-wasm = pkgs.stdenv.mkDerivation {
+          name    = <span class="str">"cybros-wasm"</span>;
+          src     = ../.;
+          buildPhase = <span class="str">''
+            wasm-pack build --target web --out-dir pkg/
+          ''</span>;
+          installPhase = <span class="str">"cp -r pkg $out"</span>;
+        };
+
+        <span class="cmt"># Docker image for K8s deployment</span>
+        cybros-docker = pkgs.dockerTools.buildImage {
+          name = <span class="str">"thienduong-lab/cybros-engine"</span>;
+          tag  = <span class="str">"v3.0.0"</span>;
+          contents = [ cybros-native pkgs.cacert ];
+          config = {
+            Cmd        = [ <span class="str">"/bin/cybros-engine"</span> ];
+            Env        = [ <span class="str">"RUST_LOG=info"</span> <span class="str">"CYBROS_ENV=production"</span> ];
+            ExposedPorts = { <span class="str">"50051/tcp"</span> = {}; };  <span class="cmt"># gRPC</span>
+          };
+        };
+
+        default = cybros-native;
+      };
+    });
+}</pre>
+    </div>
+  </div>
+
+  <div class="code-file">
+    <div class="cf-header">
+      <div class="cf-dot" style="background:var(--psi)"></div>
+      <div class="cf-dot" style="background:var(--psi)"></div>
+      <div class="cf-dot" style="background:var(--psi)"></div>
+      <span class="cf-path">github.com/thienduong-lab/cybros-tdca/.github/workflows/cybros_ci.yml</span>
+      <span class="cf-lang">GITHUB ACTIONS</span>
+    </div>
+    <div class="cf-body">
+<pre><span class="cmt"># CYBROS CI/CD — GitHub Actions Firmware Pipeline
+# Thiên Dương Cognitive Architecture Lab · TD-CAL</span>
+<span class="khala">name</span>: CYBROS Firmware CI
+
+<span class="khala">on</span>:
+  push:    { branches: [main, <span class="str">"release/*"</span>, <span class="str">"cosmos/*"</span>] }
+  pull_request: { branches: [main] }
+
+<span class="khala">env</span>:
+  CYBROS_VERSION: <span class="str">"3.0.0"</span>
+  RUST_VERSION:   <span class="str">"stable"</span>
+  WASM_TARGET:    <span class="str">"wasm32-unknown-unknown"</span>
+  ANDROID_TARGET: <span class="str">"aarch64-linux-android"</span>
+
+<span class="khala">jobs</span>:
+  <span class="khala">purifier-core</span>:
+    name: <span class="str">"Tier 3 — Rust Engine"</span>
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with: { path: <span class="str">"~/.cargo"</span>, key: <span class="str">"${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}"</span> }
+
+      - name: <span class="str">"Install Rust toolchain + targets"</span>
+        uses: dtolnay/rust-toolchain@stable
+        with: { targets: <span class="str">"wasm32-unknown-unknown,aarch64-linux-android"</span> }
+
+      - name: <span class="str">"Clippy — zero warnings"</span>
+        run:  cargo clippy --all-targets -- -D warnings
+
+      - name: <span class="str">"Test — nextest parallel"</span>
+        run:  cargo nextest run --all
+
+      - name: <span class="str">"Build native"</span>
+        run:  cargo build --release
+
+      - name: <span class="str">"Build Wasm (Tier 6)"</span>
+        run:  wasm-pack build --target web --out-dir pkg/web/
+
+      - name: <span class="str">"Build Android JNI (Nova AI)"</span>
+        run:  cargo build --release --target $ANDROID_TARGET
+
+  <span class="khala">antigravity-ai</span>:
+    name: <span class="str">"Tier 4 — Python Antigravity"</span>
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: <span class="str">"3.12"</span> }
+      - name: <span class="str">"Install deps + Maturin (PyO3)"</span>
+        run:  pip install uv && uv sync && maturin develop
+      - name: <span class="str">"Type-check with mypy"</span>
+        run:  mypy services/tier4-python/
+      - name: <span class="str">"Test Antigravity pipeline"</span>
+        run:  pytest services/tier4-python/ -v --asyncio-mode=auto
+
+  <span class="khala">publish-firmware</span>:
+    name: <span class="str">"Publish — GitHub Release"</span>
+    needs: [purifier-core, antigravity-ai]
+    runs-on: ubuntu-24.04
+    if: github.ref == <span class="str">'refs/heads/main'</span>
+    steps:
+      - name: <span class="str">"Tag firmware release"</span>
+        run: |
+          git tag cybros-v$CYBROS_VERSION-earth2026
+          git push origin cybros-v$CYBROS_VERSION-earth2026
+      - name: <span class="str">"Create GitHub Release"</span>
+        uses: softprops/action-gh-release@v2
+        with:
+          name: <span class="str">"CYBROS v${{ env.CYBROS_VERSION }} — Earth 2026 Firmware"</span>
+          body: |
+            **CYBROS Purifier Command Vessel — TD-CAL Firmware Update**
+            Founder & Lead Researcher: Nhut Do
+            *"Actualize the vision at its highest possible fidelity."*
+
+            ### Deliverables
+            - `cybros-engine` — Rust native binary (x86_64 + ARM64)
+            - `cybros_wasm.wasm` — WebAssembly bundle (Tier 6 Web)
+            - `libcybros_core.so` — Android JNI lib (Nova AI)
+            - `cybros_antigravity.py` — Python Tier 4 orchestrator
+
+            ### Architecture
+            6-Tier Distributed Stack · TDCA 5-Layer Pipeline
+            Complexity Router: Mojo/ONNX → Gemini Flash → Claude Sonnet 4
+            Google AI Antigravity Integration · Event Horizon Panorama
